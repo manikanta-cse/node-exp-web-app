@@ -43,7 +43,7 @@ gulp.task('inject', function () {
         ignorePath: '../../public'
     };
 
-    return gulp.src('./src/views/*.jade')  // type of file you specify for views
+    return gulp.src('./src/views/*.ejs')  // type of file you specify for views
         .pipe(wiredep(options))
         .pipe(inject(injectSrc, injectOptions))
         .pipe(gulp.dest('./src/views'));

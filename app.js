@@ -2,17 +2,24 @@
  * Created by kattamum on 9/27/2016.
  */
 
-var express=require('express');
+var express = require('express');
 
-var app=express();
+var app = express();
 
 
-var port=process.env.PORT ||5000;
+var port = process.env.PORT || 5000;
+
+var nav = [
+    { Link: '/Books', Text: 'Book' },
+    { Link: '/Authors', Text: 'Author' }
+];
+
+var bookRouter = require('./src/routes/bookRoutes')(nav); // importing book router
 
 //to use static files
 app.use(express.static('public'));
 //app.use(express.static('src/views'));
-app.set('views','./src/views');
+app.set('views', './src/views');
 //app.set('view engine','jade');  // setting jade view engine
 
 // var handlebars= require('express-handlebars');
@@ -20,20 +27,30 @@ app.set('views','./src/views');
 
 // app.set('view engine','.hbs');  // setting hbs view engine
 
-app.set('view engine','ejs');  // setting ejs view engine
+app.set('view engine', 'ejs');  // setting ejs view engine
 
 // app.get('/', function (req,resp) {
 //     resp.send('welcome to my express api');
 
 // });
 
-app.get('/', function (req,resp) {
-    resp.render('index',{title:"Hello from render",list:['a','b']}); // list passed to view
+
+app.use('/Books', bookRouter);
+
+
+
+app.get('/', function (req, resp) {
+    resp.render('index', {
+        title: 'Hello from render', nav: [
+            { Link: '/Books', Text: 'Books' },
+            { Link: '/Authors', Text: 'Authors' }
+        ]
+    }); // list passed to view
 
 });
 
 
 app.listen(port, function () {
-    console.log('running on port:'+port);
+    console.log('running on port:' + port);
 });
 
