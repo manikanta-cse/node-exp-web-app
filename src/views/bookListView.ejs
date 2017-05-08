@@ -62,8 +62,7 @@
             <ul class="dropdown-menu" style="padding:12px;">
               <form class="form-inline">
                 <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button>
-                <input
-                  type="text" class="form-control pull-left" placeholder="Search">
+                <input type="text" class="form-control pull-left" placeholder="Search">
               </form>
             </ul>
           </li>
@@ -130,7 +129,7 @@
                     <div class="col-xs-9">
                       <h4><span class="label label-default"><%=books[i].author%></span></h4>
                       <h4>
-                        <small style="font-family:courier,'new courier';" class="text-muted">2 hours ago  • <a href="/books/<%=i%>" class="text-muted">Read More</a></small>
+                        <small style="font-family:courier,'new courier';" class="text-muted">2 hours ago  • <a href="/books/<%=books[i]._id%>" class="text-muted">Read More</a></small>
                       </h4>
                     </div>
                     <div class="col-xs-3"></div>

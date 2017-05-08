@@ -3,8 +3,9 @@
  */
 
 var express = require('express');
-
 var app = express();
+
+
 
 
 var port = process.env.PORT || 5000;
@@ -15,6 +16,7 @@ var nav = [
 ];
 
 var bookRouter = require('./src/routes/bookRoutes')(nav); // importing book router
+var adminRouter = require('./src/routes/adminRoutes')(nav); // importing admin router
 
 //to use static files
 app.use(express.static('public'));
@@ -36,7 +38,7 @@ app.set('view engine', 'ejs');  // setting ejs view engine
 
 
 app.use('/Books', bookRouter);
-
+app.use('/Admin', adminRouter);
 
 
 app.get('/', function (req, resp) {
