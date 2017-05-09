@@ -23,6 +23,7 @@ var nav = [
 var bookRouter = require('./src/routes/bookRoutes')(nav); // importing book router
 var adminRouter = require('./src/routes/adminRoutes')(nav); // importing admin router
 var authRouter = require('./src/routes/authRoutes')(nav); // importing auth router
+var authorRouter = require('./src/routes/authorRoutes')(nav); // importing author router
 
 //to use static files
 app.use(express.static('public'));
@@ -55,6 +56,7 @@ app.set('view engine', 'ejs');  // setting ejs view engine
 app.use('/Books', bookRouter);
 app.use('/Admin', adminRouter);
 app.use('/Auth', authRouter);
+app.use('/Authors', authorRouter);
 
 
 app.get('/', function (req, resp) {
