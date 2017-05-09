@@ -28,4 +28,4 @@ module.exports = function () {
             // var user ={ username:username,password:password};
             // done(null,user);
         }));
-}
+};

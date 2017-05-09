@@ -8,12 +8,14 @@ var books = [
         title: 'Test 1',
         genre: 'Test Genre 1',
         author: 'self 1 ',
+        bookId: 656,
         read: false
     },
     {
         title: 'Test 2',
         genre: 'Test Genre 2',
         author: 'self 2',
+        bookId: 24280,
         read: false
     },
     {
@@ -44,13 +46,13 @@ var router = function (nav) {
                     db.close();
                 });
 
-            })
+            });
             //resp.send('inserting books');
 
-        })
+        });
 
     return adminRouter;
-}
+};
 
 
 module.exports = router;

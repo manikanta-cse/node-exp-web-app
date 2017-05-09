@@ -23,7 +23,7 @@ var router = function () {
                     req.login(results.ops[0], function () {
                         res.redirect('/auth/profile');
                     });
-                })
+                });
 
             });
 

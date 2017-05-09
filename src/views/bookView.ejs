@@ -118,8 +118,19 @@
                         <div class="row">
                             <br>
                             <div class="col-md-2 col-sm-3 text-center">
-                                <a class="story-title" href="#"><img alt="" src="http://api.randomuser.me/portraits/thumb/men/58.jpg" style="width:100px;height:100px"
-                                        class="img-circle"></a>
+
+                                <a class="story-title" href="#">
+                                    <%  if (book.book) {  %>
+
+                                        <img alt="" src="<%=book.book.image_url%>" style="width:100px;height:100px" class="img-circle">
+                                        <% } else{ %>
+
+                                            <img alt="" src="" style="width:100px;height:100px" class="img-circle">
+                                            <% } %>
+
+
+
+                                </a>
                             </div>
                             <div class="col-md-10 col-sm-9">
                                 <h3>
@@ -134,7 +145,20 @@
                                     </div>
                                     <div class="col-xs-3"></div>
                                 </div>
-                                <br><br>
+                                <br>
+                                <%  if (book.book) {  %>
+
+                                    <div>
+
+                                        <%-book.book.description %>
+
+                                    </div>
+
+                                    <br>
+                                    <% }  %>
+
+
+
                             </div>
                         </div>
                         <hr>
