@@ -4,49 +4,23 @@ var mongodb = require('mongodb').MongoClient;
 var passport = require('passport');
 
 var router = function () {
+
+    var AuthController = require('../controllers/authController')(); // importing auth controller
+
     authRouter.route('/signUp')
-        .post(function (req, res) {
-            console.log(req.body);
-
-            var url = 'mongodb://localhost:27017/libararyApp';
-
-            mongodb.connect(url, function (err, db) {
-
-                var collection = db.collection('users');
-                var user = {
-                    username: req.body.userName,
-                    password: req.body.password
-                };
-
-                collection.insert(user, function (err, results) {
-
-                    req.login(results.ops[0], function () {
-                        res.redirect('/auth/profile');
-                    });
-                });
-
-            });
-
-        });
+        .post(AuthController.signUp);
 
 
     authRouter.route('/signIn')
-        .post(passport.authenticate('local', {
+        .post( passport.authenticate('local', {
             failureRedirect: '/'
         }), function (req, resp) {
             resp.redirect('/auth/profile');
         });
 
     authRouter.route('/profile')
-        .all(function (req, resp, next) {
-            if (!req.user) {
-                resp.redirect('/');
-            }
-            next();
-        })
-        .get(function (req, res) {
-            res.json(req.user);
-        });
+        .all(AuthController.middleware)
+        .get(AuthController.getProfile);
 
 
     return authRouter;

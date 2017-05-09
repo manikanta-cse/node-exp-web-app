@@ -20,7 +20,7 @@ var goodreadsService = function () {
             response.on('end', function () {
                 console.log(str);
                 parser.parseString(str, function (err, result) {
-                    console.log("json", result);
+                    console.log('json', result);
                     cb(null, result.GoodreadsResponse.book);
                 });
             });
